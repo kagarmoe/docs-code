@@ -4,6 +4,7 @@
 
 # require set
 require 'set'
+require 'FileUtils'
 
 DIRECTORY = ENV.fetch('CHEFWEBDOCS',
                       '/Users/kimberlygarmoe/repos/chef-web-docs/')
@@ -11,7 +12,7 @@ DIRECTORY = ENV.fetch('CHEFWEBDOCS',
 used = Set.new
 images = Set.new
 search_text = %r{image::}
-
+# fileutils.
 # create an array of images used in the docs
 # clean up the elements
 Dir.glob("#{DIRECTORY}/chef_master/source/*.rst").each do |file|
@@ -55,7 +56,7 @@ puts "number of used: #{used.length}\n\n"
 # Used images that are used but do not exist
 unused = images - used
 puts "#\n# UNUSED\n#\n"
-puts unused.to_a
+puts unused.to_a.sort!
 puts "number of unused: #{unused.length}\n"
 puts "difference between images and used: #{images.length - used.length}\n\n"
 
