@@ -56,21 +56,35 @@ puts "number of used: #{used.length}\n\n"
 # Used images that are used but do not exist
 unused = images - used
 puts "#\n# UNUSED\n#\n"
-puts unused.to_a.sort!
+unused_a = unused.to_a.sort!
+
+# prints list of unused images
+puts unused_a
 puts "number of unused: #{unused.length}\n"
 puts "difference between images and used: #{images.length - used.length}\n\n"
 
-#puts (images.count - used.count)
+output = File.open("unused_images.txt", "w") 
+output << unused_a
+output.close
 
-#images = images.map{ |i|  %Q('#{i}') }.join(',')
-#used = used.map{ |i|  %Q('#{i}') }.join(',')
-#puts images
-#puts "########################################"
-#puts used
-# Create list of unused images
-#unused = images - used
-#puts unused.count
+# for item in unused_a do |item|
+#   check if item is in Dir glob ... images
+#   if not then
+#     move image to unused_images.txt 
+#   end 
+# end
 
-#unused = (images - used)
-#puts set_unused.count
-#puts set_unused
+# path = '~/repos/chef-web-docs/images'
+# Dir.foreach(path) do |filename|
+#   next if filename == '.' || filename == '..'
+
+#   puts "working on #{filename}"
+
+#   file = File.open("#{path}/#{filename}", 'r')
+
+#   #some code
+
+#   file.close
+
+#   # more code
+# end
