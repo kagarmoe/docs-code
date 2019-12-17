@@ -5,7 +5,7 @@ import re
 from nltk.corpus import stopwords
 from string import punctuation
 from nltk.probability import FreqDist
-# import csv
+
 
 chef_text = open('chef.txt', 'r').read()
 english_dict = open('en_words.txt', 'r').read()
@@ -33,7 +33,9 @@ def cleanupDoc(chef_text):
     return chef_words
 
 x = cleanupDoc(chef_text)
-print(x)
+dictionary = open('dictionary_results.txt', 'w')
+print(x, file = dictionary)
+dictionary.close
 
 # for word, frequency in x.most_common(500):
 #     print(u'{};{}'.format(word, frequency))
