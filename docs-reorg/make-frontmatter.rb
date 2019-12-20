@@ -16,27 +16,26 @@ require 'fileutils'
 # end
 
 result = 1
-fm_field = 1
+fm = 1
 line_count = 0
-title_count = 0
+fm_count = 0
 content = ""
-fm = ""
-
+frontmatter = ""
+# matches for page title />(.*?)</
+# matches for file name \"(.*?)\"
 Dir.glob('*.html.md.erb').each do |file|
   pattern=/>(.*?)</
-    open(file) do |f|
+    open(file, "r+") do |f|
       f.each_line do |li|
         if li.match(pattern) do
-          content = li.scan(pattern).first
+          content = li.scan(pattern).first.to_s
           line_count = line_count + 1
           if line_count=result
-           fm= "title: #{content}"
-           fm.to_s
-           puts fm
+          frontmatter = "---\ntitle:"+ content + "\ndescription: \n---\n\n"
+          puts content
           end
         end
       end
     end
   end
 end
-

@@ -47,6 +47,8 @@ require 'fileutils'
 #   end
 # end
 
+something like
+frontmatter.filename=newfile
 
 
     # puts(FileUtils.pwd)
