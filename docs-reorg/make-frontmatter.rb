@@ -31,8 +31,8 @@ Dir.glob('*.html.md.erb').each do |file|
           content = li.scan(pattern).first.to_s
           line_count = line_count + 1
           if line_count=result
-          frontmatter = "---\ntitle:"+ content + "\ndescription: \n---\n\n"
-          puts content
+          frontmatter = "---\ntitle: #{content}\ndescription: \n---\n"
+          puts frontmatter
           end
         end
       end
