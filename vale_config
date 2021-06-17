@@ -1,0 +1,8 @@
+#!/bin/bash
+cat <<EOF >.vale.ini
+StylesPath = /Users/kimberlygarmoe/bin/styles
+Vocab = tech-blogging
+[*.md]
+BasedOnStyles = Vale, Microsoft, write-good
+EOF
+
